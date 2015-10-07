@@ -93,7 +93,7 @@ def first_word(first_word):
 	if len(first_word)<3:
 		first_word_query = """MATCH(a:`%s`) where a.auto_name =~ '%s.*' return a.auto_name, a.self_count"""%(str(first_word[0])+str("_auto"),str(first_word))
 		res_first_word = graph.cypher.execute(first_word_query)
-		print res_first_word
+		#print res_first_word
 		for each_ele_first_word in res_first_word:
 				probable_words[each_ele_first_word[0]]= int(each_ele_first_word[1])
 		#print probable_words
@@ -112,11 +112,10 @@ def first_word(first_word):
 			for each_ele_first_word in res_first_word:
 				probable_words[each_ele_first_word[0]]= int(each_ele_first_word[1])
 		
-		print probable_words
+		#print probable_words
 		return  probable_words
 
 
-#first_word("vai")
 
 def second_word(first_word,second_word):
 	global REL
@@ -128,7 +127,7 @@ def second_word(first_word,second_word):
 	
 
 	if len(second_word)<3:
-		print "second_word"
+		#print "second_word"
 		most_probable_words = rel_given_to_prev(second_word,first_word)
 		if len(most_probable_words):
 			REL=True
@@ -164,7 +163,7 @@ def second_word(first_word,second_word):
 		else:
 			REl=False
 
-		print probable_words
+		#print probable_words
 		return probable_words,first_word_count,REL
 
 #second_word("yahoo","mao")
@@ -199,7 +198,7 @@ def third_word(first_word,second_word,third_word):
 			
 			probable_words[trav[0]["auto_name"]]=int(trav[0]["self_count"])
 		
-		print first_word_count,second_word_count,rel_first_third,rel_second_third,probable_words
+		#print first_word_count,second_word_count,rel_first_third,rel_second_third,probable_words
 		return first_word_count,second_word_count,rel_first_third,rel_second_third,probable_words,REL
 		
 	else:
@@ -210,7 +209,7 @@ def third_word(first_word,second_word,third_word):
 		
 		probable_third_words.append(third_word)
 	 	
-	 	print probable_third_words				
+	 	#print probable_third_words				
 
 	 	for trav in probable_third_words:
 			#print trav
@@ -224,7 +223,7 @@ def third_word(first_word,second_word,third_word):
 			for i in range( len (res_directed_path_rel)):
 		 		probable_words[res_directed_path_rel[i][0]["auto_name"]]=int(res_directed_path_rel[i][0]["self_count"])
 		 		flag=1
-			print probable_words
+			#print probable_words
 
 		if flag==1:
 			REL=True
@@ -265,7 +264,7 @@ def fourth_word(first_word,second_word,third_word,fourth_word):
 		
 		probable_fourth_words.append(fourth_word)
 	 	
-	 	print probable_fourth_words,REL
+	 	#print probable_fourth_words,REL
 
 		for trav in probable_fourth_words:
 			#print trav
@@ -290,6 +289,5 @@ def fourth_word(first_word,second_word,third_word,fourth_word):
 
 		
 
-fourth_word("verizon", "wireless", "my", "acc")
 
-print("--- %s seconds ---" % (time.time() - start_time))
+
