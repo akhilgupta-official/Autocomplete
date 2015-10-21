@@ -6,10 +6,10 @@ Autocomplete till 4 grams for SRM Search Engine.
 
 This module consist of four parts : 
 
-1. Parsing : parsing the given paragraph in sets, where each set consist of keyword.
+1. Parsing : parsing the given paragraph in sets, where each set consist of four keyword.
 	Here, i am using the data of duck duck go collected using duck_duck_go_hack.py
 
-2. Indexing : Indexing the data in graph database, i am using Neo4j
+2. Indexing : Indexing the data in graph database, i am using Neo4j.
 	graph database is selected to reduce redundancy of words as well as forming relation between words.
 
 	Alternate, you can also use wordnet or word2vec for Autocomplete.
